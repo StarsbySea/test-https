@@ -10,12 +10,9 @@ jobs:
       matrix:
         os: [windows-2019, windows-2022]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Run PowerShell command
-      shell: pwsh
-      run: |
-        $command = "[System.Net.HttpWebRequest]::Create('https://get.skype.com/go/getskype-skypeforwindows').GetResponse().ResponseUri.LocalPath"
-        $result = Invoke-Expression -Command $command
-        Write-Output "Result: $result"
+      - name: Run PowerShell command
+        shell: pwsh
+        run: |
+          $command = "[System.Net.HttpWebRequest]::Create('https://get.skype.com/go/getskype-skypeforwindows').GetResponse().ResponseUri.LocalPath"
+          $result = Invoke-Expression -Command $command
+          Write-Output "Result: $result"
